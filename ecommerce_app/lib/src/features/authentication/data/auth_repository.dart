@@ -29,10 +29,14 @@ class AuthRepository {
   }
 
   Stream<AppUser?> authStateChanges() {
-    return _auth.authStateChanges();
+    return _auth.authStateChanges().map(_convertUser);
   }
 
-  AppUser? get currentUser => null;
+  AppUser? get currentUser => _convertUser(_auth.currentUser);
+
+  /// Helper method to convert a [User] to an [AppUser]
+  AppUser? _convertUser(User? user) =>
+      user != null ? AppUser(uid: user.uid, email: user.email) : null;
 }
 
 @Riverpod(keepAlive: true)
