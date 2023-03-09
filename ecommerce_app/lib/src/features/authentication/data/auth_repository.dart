@@ -41,8 +41,7 @@ class AuthRepository {
 
 @Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef ref) {
-  // TODO: create and return repository
-  throw UnimplementedError();
+  return AuthRepository(FirebaseAuth.instance);
 }
 
 // * Using keepAlive since other providers need it to be an
