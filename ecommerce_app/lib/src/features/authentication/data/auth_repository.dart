@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommerce_app/src/features/authentication/data/firebase_app_user.dart';
 import 'package:ecommerce_app/src/features/authentication/domain/app_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -36,7 +37,7 @@ class AuthRepository {
 
   /// Helper method to convert a [User] to an [AppUser]
   AppUser? _convertUser(User? user) =>
-      user != null ? AppUser(uid: user.uid, email: user.email) : null;
+      user != null ? FirebaseAppUser(user) : null;
 }
 
 @Riverpod(keepAlive: true)

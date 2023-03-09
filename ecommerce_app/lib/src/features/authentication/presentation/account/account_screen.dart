@@ -101,10 +101,11 @@ class EmailVerificationWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             onPressed: () {
-              // TODO: Implement
+              // * no need to await here (fire and forget)
+              user.sendVerificationEmail();
               showAlertDialog(
                 context: context,
-                title: 'Not implemented'.hardcoded,
+                title: 'Sent - now check your email'.hardcoded,
               );
             },
           ),
